@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <meta charset = 'utf-8'> 
+    </head>
+    <body>
+        <table>
+            <form action="/search" method="POST" enctype="multipart/form-data" name="searchForm" target="result">
+            <tr>
+                <td><input type="text" name="key"></td>
+                <td>מילת חיפוש</td>
+            </tr>
+            <tr>
+                <td><input type="file" name="text_file"></td>
+                <td>קובץ טקסט</td>
+            </tr>
+        </table>
+        <br>
+        <input type="submit" value="שלח">
+        
+        </form>
+        <br>
+        <iframe name="result" width="80%" height="500"></iframe>
+        
+    </body>
+
+</html>
