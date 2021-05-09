@@ -1,0 +1,113 @@
+body{
+    background-color: #000;
+}
+
+h1 { color:tan; font-family: 'Helvetica Neue', sans-serif; font-size: 46px; font-weight: 100; line-height: 50px; letter-spacing: 1px; padding: 0 0 40px; border-bottom: double #555; }
+h2  {  font-family: 'Helvetica Neue', sans-serif; font-size: 20px; font-weight: 20; }
+
+.sendFiles {
+    background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+.sendFiles:hover {
+    opacity:1;
+  }
+
+
+.tableUploadFiles { background-color:chartreuse;border-collapse:collapse; }
+.tableUploadFiles th { background-color:#000;color:white;width:50%; }
+.tableUploadFiles td, .myTable th { padding:5px;border:1px solid #000; }
+
+#gifBackGround{
+    background-image:url('./200w.webp');
+  /*  margin: 20px;
+  padding: 20px;*/
+  width: 100%;
+  height:80%;
+}
+
+#divuploaddiv{
+    background-color: tomato;
+  color: white;
+  border: 2px solid black;
+  margin: 20px;
+  padding: 20px;
+  width: 20%;
+  height:80%;
+  /*margin-left: 10px;*/
+  float:left;
+}
+
+#divResult{
+    background-color:cadetblue;
+  color: white;
+  border: 2px solid black;
+  margin: 20px;
+  padding: 20px;
+  width: 50%;
+  height:70%;
+  /*margin-right: 10px;*/
+  float:right;
+
+}
+
+
+.drop {
+    background-color: #808080;
+    /*position: absolute;
+    /*bottom: 0;
+    right: 0;*/
+    height: 25%;
+    width: 100%;
+    
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 10;
+    font-size: 15px;
+    cursor: pointer;
+    color: #cccccc;
+    border: 2px dashed #009578;
+    border-radius: 5px;
+}
+   
+.drop--over {
+    border-style: solid;
+}
+
+.drop__input {
+    display: none;
+}
+
+.drop__thumb {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #cccccc;
+    background-size: cover;
+    position: relative;
+}
+
+.drop__thumb::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2px 0;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.75);
+    font-size: 5px;
+    text-align: center;
+}
+

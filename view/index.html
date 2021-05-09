@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <meta charset = 'utf-8'> 
+        <link rel="stylesheet" href="mystyle.css">
+        <title>Anomaly Detection Server</title>
+    </head>
+    <body>
+        <h1>Anomaly Detection Server</h1>
+        <div id="gifBackGround">
+            <div id="divuploaddiv">
+        
+                <h2>upload</h2>
+                <label>List of models
+                    <select name= "select1">
+                    <option value= "1">regression </option>
+                    <option value= "2">Hybrid</option>
+                    </select>
+                </label>  
+                
+             <form action="/detect" method="POST" enctype="multipart/form-data" name="detectFiles" target="result">
+               <!-- <div class="drop"></div><input type="file" class="drop-zone__prompt">Drop csv file for learning here or click to upload<input class="drop-zone__input" type="file" name="myFile" /></div>
+               -->
+                      <div class="drop"><span class="drop-zone__prompt">Drop csv file for learning here or click to upload</span><input class="drop-zone__input" type="file" name="trainFile" /></div>
+                    <br>
+                    <div class="drop"><span class="drop-zone__prompt">Drop csv file to check for anomalies here or click to upload</span><input class="drop-zone__input" type="file" name="testFile"/></div>
+                    <br>
+                    <input class="sendFiles" type="submit" value="upload"> 
+                </form>
+            </div>
+
+            <div id="divResult">
+                <h2>result</h2>
+            <iframe name="result" width="80%" height="100%"></iframe>
+            </div>
+
+        </div>
+    </body>
+
+
+
+</html>
