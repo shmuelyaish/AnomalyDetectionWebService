@@ -5,7 +5,8 @@ const ec = require('smallest-enclosing-circle');
 class HybridAnomalyDetector extends simple.SimpleAnomalyDetector {
 	//learnHelper(const TimeSeries& ts, float p/*pearson*/, string f1, string f2, Point ** ps)
 	learnHelper(ts, p, f1, f2, x, y) {
-		if (p > 0.5 && p < threshold) {
+		super.learnHelper(ts, p, f1, f2, x, y);
+		if (p > 0.5 && p < this.threshold) {
 			var circle = ec(x, y);
 			var c = new simple.correlatedFeatures();
 			c.feature1 = f1;
