@@ -1,5 +1,5 @@
 # AnomalyDetectionWebService
-Authors: Shmuel Yaish, Elad Bilman, Yedidya Bachar.
+Authors: Shmuel Yaish, Yedidya Bachar, Elad Bilman.
 
 This project is for our university course Advanced Programming 2.
 
