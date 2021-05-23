@@ -31,7 +31,7 @@ What you need in order to edit/run the server:
   NOTE:
     - We included .csv files in the model dir for easier testing. 
 
-How to connet:
+How to connect:
   1. By "localhost":
     - Open your favorite browser and type the url: "http://localhost:8080/"
   2. By "Client":
