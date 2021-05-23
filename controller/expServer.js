@@ -62,7 +62,7 @@ app.post('/detect', (req, res) => {
 
 
 app.post("/detectTrusted",(req,res)=>{
-    res.write("searching for" + req.body.key +":\n")
+    res.write("List of Anomalies\n")
     var key = req.body.key
     
     // Checking if there any files sent
