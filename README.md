@@ -9,7 +9,7 @@ Introduction:
  
 How to use:
   NOTE:
-    - Link to youtube video which we explain how to use:
+    - Link to youtube video explaining how to use the program: https://youtu.be/AhdIsmxYpr4
       
   1. Choose the Linear or Hybrid anomaly detection algorithm. 
   2. Upload a .csv file that the program will learn from in the right box. (!NOTE! : The csv must be of Unix endline format '\n') 
