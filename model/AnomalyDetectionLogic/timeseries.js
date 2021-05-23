@@ -1,7 +1,4 @@
-//include basic_funcs.js
 const basic = require("./basic_funcs.js");
-//const fs = require('fs')
-//const readline = require('readline');
 
 class TimeSeries {
     constructor(CSVFileName) {
