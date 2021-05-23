@@ -8,6 +8,9 @@ Introduction:
   learns from, and another .csv (with anomalies) for the program to detect. 
  
 How to use:
+  NOTE:
+    - Link to youtube video which we explain how to use:
+      
   1. Choose the Linear or Hybrid anomaly detection algorithm. 
   2. Upload a .csv file that the program will learn from in the right box. (!NOTE! : The csv must be of Unix endline format '\n') 
   3. Upload a .csv file that for the program to detect in the right box.
