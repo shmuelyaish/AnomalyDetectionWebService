@@ -43,8 +43,7 @@ app.post('/detect', (req, res) => {
         messege = model.hybridAnomaly(trainigFile.data.toString(), testingFile.data.toString());
     }
 
-    console.log(messege);
-    // console.log(trainigFile);
+    
     let JSONmessege = {};
    
     function mapToObj(map){
