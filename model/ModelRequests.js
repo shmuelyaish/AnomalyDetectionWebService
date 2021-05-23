@@ -1,6 +1,6 @@
-const tseries = require("./timeseries.js");
-const simple = require("./SimpleAnomalyDetector.js");
-const hybrid = require("./HybridAnomalyDetector.js");
+const tseries = require("./AnomalyDetectionLogic/timeseries.js");
+const simple = require("./AnomalyDetectionLogic/SimpleAnomalyDetector.js");
+const hybrid = require("./AnomalyDetectionLogic/HybridAnomalyDetector.js");
 
 //changes it to a map divided into sections of continus anomalies
 function turnToBetterMap(anomalies, atts) {
