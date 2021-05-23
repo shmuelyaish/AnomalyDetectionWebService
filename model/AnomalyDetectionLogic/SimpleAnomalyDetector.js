@@ -1,15 +1,7 @@
 const basic = require("./basic_funcs.js");
 const tseries = require("./timeseries.js");
-//const Struct = (...keys) => ((...v) => keys.reduce((o, k, i, a, b, c, d) => { o[k] = v[i]; return o }, {}));
-/*
-class correlatedFeatures = Struct(
-	'feature1', 'feature2',
-	'corrlation',
-	'lin_reg',
-	'threshold',
-	'cx', 'cy'
-);
-*/
+
+//correlated features class, holds all the details of the two correlated features
 class correlatedFeatures {
 	constructor() {
 		this.feature1 = '';
@@ -23,6 +15,7 @@ class correlatedFeatures {
 }
 class SimpleAnomalyDetector {
 	constructor() {
+		//cf is an array of correlated features
 		this.threshold = 0.9;
 		this.cf = new Array();
 	}
@@ -38,6 +31,7 @@ class SimpleAnomalyDetector {
 		return max;
 	}
 	//learnHelper(const TimeSeries& ts, float p/*pearson*/, string f1, string f2, Point** ps)
+	//saves the details of correlated features
 	learnHelper(ts, p, f1, f2, x, y) {
 		if (p > this.threshold) {
 			var r1 = basic.linear_reg(x, y);
@@ -50,6 +44,7 @@ class SimpleAnomalyDetector {
 			this.cf.push(c);
 		}
 	}
+	//checks whats normal
 	learnNormal(ts) {
 		var atts = ts.gettAttributes();
 		var len = ts.getRowSize();
@@ -81,6 +76,7 @@ class SimpleAnomalyDetector {
 		}
 	}
 	//isAnomalous(float x, float y, correlatedFeatures c)
+	//checks if there's an anomaly
 	isAnomalous(x, y, c) {
 		return (Math.abs(y - c.lin_reg.f(x)) > c.threshold);
 	}
@@ -96,6 +92,7 @@ class SimpleAnomalyDetector {
 			let x = ts.getAttributeData(this.cf[i].feature1);
 			let y = ts.getAttributeData(this.cf[i].feature2);
 			for (let j = 0; j < x.length; j++) {
+				//if it's an anomaly save it as an anomaly
 				if (this.isAnomalous(x[j], y[j], this.cf[i])) {
 					anomReport.get(this.cf[i].feature1).push(j + 1);
 					anomReport.get(this.cf[i].feature2).push(j + 1);
