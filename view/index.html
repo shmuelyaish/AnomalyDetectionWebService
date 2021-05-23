@@ -9,29 +9,28 @@
         <div id="gifBackGround">
             <div id="divuploaddiv">
         
-                <h2>upload</h2>
+            <h2>upload</h2>
+            <form action="/detectTrusted" method="POST" enctype="multipart/form-data" name="detectFiles" target="result">
                 <label>List of models
-                    <select name= "select1">
-                    <option value= "1">regression </option>
-                    <option value= "2">Hybrid</option>
+                    <select name="AlogorithmType" type="number">
+                        </option value= "1">Regression </option>
+                        <option value= "2">Hybrid</option>
                     </select>
                 </label>  
-                
-             <form action="/detect" method="POST" enctype="multipart/form-data" name="detectFiles" target="result">
-               <!-- <div class="drop"></div><input type="file" class="drop-zone__prompt">Drop csv file for learning here or click to upload<input class="drop-zone__input" type="file" name="myFile" /></div>
+                <!-- <div class="drop"></div><input type="file" class="drop-zone__prompt">Drop csv file for learning here or click to upload<input class="drop-zone__input" type="file" name="myFile" /></div>
                -->
-                      <div class="drop"><span class="drop-zone__prompt">Drop csv file for learning here or click to upload</span><input class="drop-zone__input" type="file" name="trainFile" /></div>
-                    <br>
-                    <div class="drop"><span class="drop-zone__prompt">Drop csv file to check for anomalies here or click to upload</span><input class="drop-zone__input" type="file" name="testFile"/></div>
-                    <br>
-                    <input class="sendFiles" type="submit" value="upload"> 
-                </form>
-            </div>
+                <div class="drop"><span class="drop-zone__prompt">Drop csv file for learning here or click to upload</span><input class="drop-zone__input" type="file" name="trainFile" /></div>
+                <br>
+                <div class="drop"><span class="drop-zone__prompt">Drop csv file to check for anomalies here or click to upload</span><input class="drop-zone__input" type="file" name="testFile"/></div>
+                <br>
+                <input class="sendFiles" type="submit" value="upload"> 
+            </form>
+        </div>
 
-            <div id="divResult">
-                <h2>result</h2>
-            <iframe name="result" width="80%" height="100%"></iframe>
-            </div>
+        <div id="divResult">
+            <h2>result</h2>
+            <iframe name="result" width="100%" height="80%"></iframe>
+        </div>
 
         </div>
     </body>
