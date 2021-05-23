@@ -28,3 +28,13 @@ What you need in order to edit/run the server:
     Type this commands to download:
       - npm install express --save
       - npm install small-enclosing-circle
+  NOTE:
+    - We included .csv files in the model dir for easier testing. 
+
+How to connet:
+  1. By "localhost":
+    - Open your favorite browser and type the url: "http://localhost:8080/"
+  2. By "Client":
+    - By creating your own .html client page and sending HTTP requests.
+    - In the HTTP POST request for learning (submit button), the name of the files in the request body
+      must be called: trainFile for the learning file, testFile for the detection file. 
