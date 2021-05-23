@@ -26,7 +26,7 @@ function avg(arr) {
     }
     return sum / arr.length;
 }
-
+//calculates the varience
 function varience(arr) {
     var av = avg(arr);
     var sum = 0;
