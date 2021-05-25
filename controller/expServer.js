@@ -63,7 +63,7 @@ app.post('/detect', (req, res) => {
 
 
 app.post("/detectTrusted",(req,res)=>{
-    console.log("hello")
+    
     res.write("List of Exceptions")
     var key = req.body.key
     
