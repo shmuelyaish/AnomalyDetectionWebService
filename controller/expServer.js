@@ -1,7 +1,7 @@
 const express = require('express')
 const fileUpload = require('express-fileupload');
 const model = require("../model/ModelRequests")
-
+const view = require("../view/view.js");
 
 const app = express()
 app.use(express.urlencoded({
@@ -43,7 +43,8 @@ app.post('/detect', (req, res) => {
         messege = model.hybridAnomaly(trainigFile.data.toString(), testingFile.data.toString());
     }
 
-    
+    console.log(messege);
+    // console.log(trainigFile);
     let JSONmessege = {};
    
     function mapToObj(map){
@@ -62,19 +63,18 @@ app.post('/detect', (req, res) => {
 
 
 app.post("/detectTrusted",(req,res)=>{
-    res.write("List of Anomalies\n")
+    console.log("hello")
+    res.write("List of Exceptions")
     var key = req.body.key
     
     // Checking if there any files sent
     if (!req.files) {
-        req.write('You need to upload the files BEFORE submition.\n');
+        res.write('You need to upload the files BEFORE submition.\n');
         res.end();
         return;
     }
 
-    // console.log(req.baseUrl);
-    console.log(req);
-
+   
 
     const trainigFile = req.files.trainFile;
     const testingFile = req.files.testFile;
@@ -87,8 +87,8 @@ app.post("/detectTrusted",(req,res)=>{
         messege = model.hybridAnomaly(trainigFile.data.toString(), testingFile.data.toString());
     }
 
-    console.log(messege);
-    // console.log(trainigFile);
+  
+    
     let JSONmessege = {};
    
     function mapToObj(map){
@@ -99,40 +99,10 @@ app.post("/detectTrusted",(req,res)=>{
     }
 
     JSONmessege = mapToObj(messege);
+    
+    view.edit(res ,JSONmessege);
+    
 
-   
-
-        var file = req.files.trainFile //name in html of file
-        let jsonString = file.data.toString()
-        let jsonString2 = JSONmessege;
-        
-        
-        
-        let send = ""
-        for (var key in jsonString2) {
-            let counter = 1;
-            if (jsonString2.hasOwnProperty(key)) {
-                 
-                let arr = jsonString2[key].toString().split(",");
-                send += "Attribute " +key+": \n";
-                let check = 0;
-                for(var i in arr){
-                    if(check === 0){
-                        send +=`anomaly number: ${counter} -> from: ${arr[i]} `
-                        counter++;
-                    }
-                    else{
-                        send +="to: " + arr[i] +"\n";
-                    }
-                   check = (check+1)%2            
-                }
-                send +="\n"
-
-            }
-        }
-        
-    res.write(send)
-    res.end()
 } )
 
 app.listen(8080)
