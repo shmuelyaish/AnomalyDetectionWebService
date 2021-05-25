@@ -99,7 +99,7 @@ app.post("/detectTrusted",(req,res)=>{
     }
 
     JSONmessege = mapToObj(messege);
-    
+    //send to view to edit
     view.edit(res ,JSONmessege);
     
 
