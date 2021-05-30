@@ -80,22 +80,26 @@ class SimpleAnomalyDetector {
 	isAnomalous(x, y, c) {
 		return (Math.abs(y - c.lin_reg.f(x)) > c.threshold);
 	}
-	//instead of anomaly report, make map with atts as keys and arrays with timesteps as values
+	//instead of anomaly report, make map with anomalies cf as keys and arrays with timesteps as values
 	detect(ts) {
 		var anomReport = new Map();
-		//put attribute for and arrays for timesteps
-		var atts = ts.gettAttributes();
-		for (let i = 0; i < atts.length; i++) {
-			anomReport.set(atts[i], new Array());
-		}
 		for (let i = 0; i < this.cf.length; i++) {
+			//get the colomns of each feature
 			let x = ts.getAttributeData(this.cf[i].feature1);
 			let y = ts.getAttributeData(this.cf[i].feature2);
+			let first = true;
 			for (let j = 0; j < x.length; j++) {
-				//if it's an anomaly save it as an anomaly
 				if (this.isAnomalous(x[j], y[j], this.cf[i])) {
-					anomReport.get(this.cf[i].feature1).push(j + 1);
-					anomReport.get(this.cf[i].feature2).push(j + 1);
+					//if its the first time we are seeing an anomaly with these features
+					if (first) {
+						//set the feature and save the anomaly
+						anomReport.set(this.cf[i].feature1 + "-" + this.cf[i].feature2, new Array());
+						anomReport.get(this.cf[i].feature1 + "-" + this.cf[i].feature2).push(j + 1);
+						first = false;
+					} else {
+						//otherwise just save the anomaly
+						anomReport.get(this.cf[i].feature1 + "-" + this.cf[i].feature2).push(j + 1);
+                    }
                 }
             }
 		}
