@@ -3,17 +3,22 @@ const simple = require("./AnomalyDetectionLogic/SimpleAnomalyDetector.js");
 const hybrid = require("./AnomalyDetectionLogic/HybridAnomalyDetector.js");
 
 //changes it to a map divided into sections of continus anomalies
-function turnToBetterMap(anomalies, atts) {
+function turnToBetterMap(anomalies) {
     //create a new map, a better one
     var betterMap = new Map();
-    //put attributes and arrays for timesteps
-    for (let i = 0; i < atts.length; i++) {
-        betterMap.set(atts[i], new Array());
+    var itr = anomalies.keys();
+    //put keys of anomalies into better array
+    for (let i = 0; i < anomalies.size; i++) {
+        betterMap.set(itr.next().value, new Array());
     }
-    //go over each attribute
-    for (let i = 0; i < atts.length; i++) {
+    //reset the iterator
+    itr = anomalies.keys();
+    //go over each key
+    for (let i = 0; i < anomalies.size; i++) {
+        //save the key
+        let k = itr.next().value;
         //take the array of values in the attributes
-        let values = anomalies.get(atts[i]);
+        let values = anomalies.get(k);
         //checks if it's the first value
         let start = true;
         //create an array. It will hold two values, the start and end of continuas anomalies timesteps
@@ -28,7 +33,7 @@ function turnToBetterMap(anomalies, atts) {
             } else if (values[j - 1] + 1 != values[j]) {
                 //then save the last value and push the continuas timestep array into the map
                 arr.push(values[j - 1]);
-                betterMap.get(atts[i]).push(arr);
+                betterMap.get(k).push(arr);
                 //reset to a new array and save this timestep as the start of it
                 arr = new Array();
                 arr.push(values[j]);
@@ -36,7 +41,7 @@ function turnToBetterMap(anomalies, atts) {
             //if we're on the last value, save it as the second timestep and push it
             if (j == values.length - 1) {
                 arr.push(values[j]);
-                betterMap.get(atts[i]).push(arr);
+                betterMap.get(k).push(arr);
             }
         }
     }
@@ -65,7 +70,7 @@ function attempt() {
     vals = new Array();
     vals.push(7);
     betterMap.set("C", vals);
-    return turnToBetterMap(betterMap, atts);
+    return turnToBetterMap(betterMap);
 }
 */
 
@@ -75,7 +80,7 @@ function simpleAnomaly(trainPath, testPath) {
     var test = new tseries.TimeSeries(testPath);
     var sad = new simple.SimpleAnomalyDetector();
     sad.learnNormal(train);
-    return turnToBetterMap(sad.detect(test), train.gettAttributes());
+    return turnToBetterMap(sad.detect(test));
 }
 //reciveing csvs it calculates hybrid anomalies. Returns map of anomalies
 function hybridAnomaly(trainPath, testPath) {
@@ -83,6 +88,6 @@ function hybridAnomaly(trainPath, testPath) {
     var test = new tseries.TimeSeries(testPath);
     var had = new hybrid.HybridAnomalyDetector();
     had.learnNormal(train);
-    return turnToBetterMap(had.detect(test), train.gettAttributes());
+    return turnToBetterMap(had.detect(test));
 }
 module.exports = { hybridAnomaly, simpleAnomaly };
