@@ -11,7 +11,7 @@ function edit(res, JSONmessege){
         if (jsonString2.hasOwnProperty(key)) {
                 
             let arr = jsonString2[key].toString().split(",");
-            send += "Attribute " +key+": \n";
+            send += "Attributes " +key+": \n";
             let check = 0;
             for(var i in arr){
                 if(check === 0){
